@@ -1,8 +1,9 @@
 .cronCounter {
-  font-size: clamp(8rem, 25vw, 16rem);
+  width: 100%;
+  font-size: clamp(4rem, 18vw, 16rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 32px;
+  padding: 0 2rem;
 }

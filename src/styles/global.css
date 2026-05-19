@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+/* Altera a seleção em todo o site */
+::selection {
+  background-color: var(--primary); /* Cor de fundo (ex: amarelo rabisco) */
+  color: var(--text-over-primary); /* Cor do texto */
+}
+
 html {
   font-size: 62.5%;
 }
@@ -34,6 +40,16 @@ a:hover {
   color: var(--link-hover);
 }
 
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 .primaryButton {
   font-size: 1.6rem;
   font-family: inherit;
@@ -47,7 +63,7 @@ a:hover {
   padding: 0.8rem;
   position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
   gap: 0.8rem;
-  transition: all;
+  transition: all 0.2s ease-in-out;
   border: none;
 }
 
@@ -63,14 +79,16 @@ a:hover {
   border-image-slice: 70;
   border-image-repeat: stretch;
   pointer-events: none;
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
 
 .primaryButton:hover {
+  color: var(--text-over-primary);
+  transform: scale(1.05);
+  rotate: 2deg;
   filter: brightness(80%);
-  color: var(--text-default);
   background-color: var(--primary);
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
 
 .outlinedButton {
@@ -84,8 +102,9 @@ a:hover {
   padding: 0.8rem;
   position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
   gap: 0.8rem;
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
+
 .outlinedButton::after {
   content: '';
   position: absolute;
@@ -98,18 +117,21 @@ a:hover {
   border-image-slice: 70;
   border-image-repeat: stretch;
   pointer-events: none;
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
 
 .outlinedButton:hover::after {
   border-image-slice: 45;
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
 
 .outlinedButton:hover {
+  color: var(--text-over-primary);
+  transform: scale(1.05);
+  rotate: 2deg;
   filter: brightness(80%);
-  background-color: color-mix(in srgb, var(--primary), transparent 80%);
-  transition: all;
+  background-color: var(--primary);
+  transition: all 0.2s ease-in-out;
 }
 
 .sketch-bg {
@@ -118,4 +140,34 @@ a:hover {
   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://w3.org d='M0 0h20L0 20z' fill='%239C92AC' fill-opacity='0.1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 40px 40px;
+}
+
+/* Container do logo para disparar a animação */
+.logoContainer {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+/* Aplica a animação ao passar o mouse */
+.logoContainer:hover {
+  animation: logo-bounce 0.5s ease-in-out;
+}
+
+/* Definição do efeito de pulo (bounce) */
+@keyframes logo-bounce {
+  0%,
+  100% {
+    transform: translateY(0.5);
+  }
+  30% {
+    transform: translateY(-10px);
+    transform: scale(1.1);
+  }
+  50% {
+    transform: translateY(0);
+    transform: scale(1.05);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
 }

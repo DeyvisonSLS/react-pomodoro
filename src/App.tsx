@@ -15,10 +15,12 @@ function App() {
         {/* Header */}
         <Container>
           <Header>
-            <Logo
-              width={64}
-              height={64}
-            />
+            <div className='logoContainer'>
+              <Logo
+                width={64}
+                height={64}
+              />
+            </div>
             <h2>React Pomodoro</h2>
           </Header>
         </Container>
@@ -31,7 +33,7 @@ function App() {
       {/* Cronometer */}
       <Container>
         <Cronometer>
-          <span>00:00:00</span>
+          00:00:00
         </Cronometer>
       </Container>
 
