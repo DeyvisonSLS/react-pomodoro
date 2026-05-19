@@ -1,0 +1,121 @@
+@import './theme.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: monospace, 'Helvetica Neue', sans-serif;
+  font-size: 1.6rem; /* 16px */
+  background: var(--gray-900);
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://w3.org d='M0 0h20L0 20z' fill='%239C92AC' fill-opacity='0.9'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  color: var(--text-default);
+  filter: url(#scribble-texture);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:default {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+.primaryButton {
+  font-size: 1.6rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: color-mix(in srgb, var(--primary), transparent 80%);
+  color: var(--text-over-primary);
+  transition: all 0.1s ease-in-out;
+  padding: 0.8rem;
+  position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
+  gap: 0.8rem;
+  transition: all;
+  border: none;
+}
+
+.primaryButton::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -2px;
+  bottom: -2px;
+  border: 15px solid;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 70;
+  border-image-repeat: stretch;
+  pointer-events: none;
+  transition: all;
+}
+
+.primaryButton:hover {
+  filter: brightness(80%);
+  color: var(--text-default);
+  background-color: var(--primary);
+  transition: all;
+}
+
+.outlinedButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: transparent;
+  color: var(--text-over-primary);
+  transition: all 0.1s ease-in-out;
+  padding: 0.8rem;
+  position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
+  gap: 0.8rem;
+  transition: all;
+}
+.outlinedButton::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -2px;
+  bottom: -2px;
+  border: 15px solid;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 70;
+  border-image-repeat: stretch;
+  pointer-events: none;
+  transition: all;
+}
+
+.outlinedButton:hover::after {
+  border-image-slice: 45;
+  transition: all;
+}
+
+.outlinedButton:hover {
+  filter: brightness(80%);
+  background-color: color-mix(in srgb, var(--primary), transparent 80%);
+  transition: all;
+}
+
+.sketch-bg {
+  background-color: #ffffff;
+  /* Example using a 'hand-drawn' squiggle from Hero Patterns */
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://w3.org d='M0 0h20L0 20z' fill='%239C92AC' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 40px 40px;
+}

@@ -1,0 +1,21 @@
+.container-fluid {
+  max-width: auto;
+}
+
+.containerVertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 98rem;
+  margin: 64px auto;
+}
+
+.containerHorizontal {
+  max-width: 98rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

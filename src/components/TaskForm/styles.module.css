@@ -1,0 +1,72 @@
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+}
+
+input {
+  background-color: transparent;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23ffffff' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 20;
+  border-image-repeat: stretch;
+  width: 100%;
+  max-width: 55rem;
+  height: 4rem;
+  font-size: 2rem;
+  padding: 0.8rem;
+  color: var(--primary-dark);
+  -webkit-appearance: none;
+  appearance: none;
+  border-width: 0.2rem;
+  border-color: rgb(255, 255, 255);
+  font: inherit;
+  font-size: 1.6rem;
+}
+
+input:focus {
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23ffffff' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 30;
+  border-image-repeat: stretch;
+  border-width: 0.2rem;
+  outline: 0;
+}
+
+.startButton {
+  font-size: 1.6rem;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: color-mix(in srgb, var(--primary), transparent 80%);
+  color: var(--text-over-primary);
+  transition: all 0.1s ease-in-out;
+  padding: 0.8rem;
+  position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
+  gap: 0.8rem;
+  transition: all;
+  border: none;
+}
+
+.startButton::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -2px;
+  bottom: -2px;
+  border: 15px solid;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 70;
+  border-image-repeat: stretch;
+  pointer-events: none;
+  transition: all;
+}
+
+.startButton:hover {
+  filter: brightness(80%);
+  background-color: var(--primary);
+  transition: all;
+}
