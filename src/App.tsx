@@ -10,7 +10,7 @@ import { Cronometer } from './components/Cronometer';
 
 function App() {
   return (
-    <>
+    <div className='appContainer'>
       <Container direction='horizontal'>
         {/* Header */}
         <Container>
@@ -19,7 +19,7 @@ function App() {
               width={64}
               height={64}
             />
-            <h1>React Pomodoro</h1>
+            <h2>React Pomodoro</h2>
           </Header>
         </Container>
         {/* Menu */}
@@ -30,7 +30,9 @@ function App() {
 
       {/* Cronometer */}
       <Container>
-        <Cronometer>00:00:00</Cronometer>
+        <Cronometer>
+          <span>00:00:00</span>
+        </Cronometer>
       </Container>
 
       {/* Task form */}
@@ -60,7 +62,7 @@ function App() {
           />
         </filter>
       </svg>
-    </>
+    </div>
   );
 }
 

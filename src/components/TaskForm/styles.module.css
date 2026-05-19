@@ -46,8 +46,9 @@ input:focus {
   padding: 0.8rem;
   position: relative; /* Adicionado para posicionar o ::after em relação ao botão */
   gap: 0.8rem;
-  transition: all;
+  transition: all 0.2s ease-in-out;
   border: none;
+  cursor: pointer;
 }
 
 .startButton::after {
@@ -62,11 +63,13 @@ input:focus {
   border-image-slice: 70;
   border-image-repeat: stretch;
   pointer-events: none;
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }
 
 .startButton:hover {
+  transform: scale(1.1);
+  rotate: 3deg;
   filter: brightness(80%);
   background-color: var(--primary);
-  transition: all;
+  transition: all 0.2s ease-in-out;
 }

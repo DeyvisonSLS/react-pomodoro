@@ -63,7 +63,7 @@ function MenuItem({
 
 export function Menu() {
   return (
-    <div className={styles.menu}>
+    <nav className={styles.menu}>
       {menuItems.map((item, index) => (
         <MenuItem
           type='text'
@@ -78,6 +78,6 @@ export function Menu() {
         label='Dark Mode'
         link='/settings'
       />
-    </div>
+    </nav>
   );
 }
