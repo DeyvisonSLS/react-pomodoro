@@ -1,7 +1,8 @@
 .footerContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 1.6rem;
   align-items: center;
-  justify-content: center;
-  gap: 1.6rem
+  justify-content: space-between;
+  width: 100%;
 }

@@ -1,0 +1,128 @@
+.baseButton {
+  /* Variáveis do Contrato */
+  --btn-bg: var(--gray-700);
+  --btn-hover-bg: var(--gray-600);
+  --btn-color: var(--text-default);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23555f7d' stroke-width='5'/%3E%3C/svg%3E");
+  --btn-border-slice: 70;
+  --btn-rotate: 0deg;
+  --btn-padding: 0.8rem 1.6rem;
+  --btn-hover-rotate: 1deg;
+  --btn-hover-brightness: 1.1;
+  --btn-hover-scale: 1.05;
+
+  position: relative;
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding);
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--btn-color);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  border: none;
+  transform: rotate(var(--btn-rotate)) scale(1);
+  transition: all 0.2s ease-in-out;
+}
+
+.baseButton::after {
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  bottom: -2px;
+  left: -4px;
+  pointer-events: none;
+  content: '';
+  border: 15px solid;
+  border-image-source: var(--btn-border-img);
+  border-image-slice: var(--btn-border-slice);
+  border-image-repeat: stretch;
+  transition: all 0.2s ease-in-out;
+}
+
+.baseButton:hover {
+  background-color: var(--btn-hover-bg);
+  filter: brightness(var(--btn-hover-brightness));
+  transform: scale(var(--btn-hover-scale)) rotate(var(--btn-hover-rotate));
+}
+
+.baseButton:active {
+  transform: scale(0.98);
+}
+
+/* Variantes: Apenas definem valores das variáveis */
+.primaryButton {
+  --btn-bg: var(--primary);
+  --btn-hover-bg: var(--primary);
+  --btn-color: var(--text-over-primary);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+  --btn-hover-rotate: 1deg;
+}
+
+.secondaryButton {
+  --btn-bg: var(--gray-700);
+  --btn-hover-bg: var(--gray-600);
+  --btn-color: var(--text-default);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23555f7d' stroke-width='5'/%3E%3C/svg%3E");
+  --btn-hover-rotate: -1deg;
+}
+
+.outlineButton {
+  --btn-bg: transparent;
+  --btn-hover-bg: color-mix(in srgb, var(--primary), transparent 90%);
+  --btn-color: var(--primary);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+}
+
+.ghostButton {
+  --btn-bg: transparent;
+  --btn-hover-bg: var(--gray-800);
+  --btn-color: var(--text-muted);
+  --btn-border-img: none;
+}
+
+.ctaButton {
+  --btn-bg: var(--primary);
+  --btn-hover-bg: var(--btn-bg);
+  --btn-color: var(--text-over-primary);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23bb3f3b' stroke-width='5'/%3E%3C/svg%3E");
+  --btn-border-slice: 45;
+  --btn-padding: 0.8rem;
+  --btn-hover-brightness: 0.8;
+  --btn-hover-rotate: 2deg;
+  --btn-rotate: 0deg;
+}
+
+/* Cores Personalizadas */
+
+.destructiveButton {
+  --btn-bg: var(--error);
+  --btn-hover-bg: var(--error);
+  --btn-color: var(--text-over-error);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23991b1b' stroke-width='5'/%3E%3C/svg%3E");
+}
+
+.infoButton {
+  --btn-bg: var(--info);
+  --btn-hover-bg: var(--info);
+  --btn-color: var(--text-over-info);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%230ea5e9' stroke-width='5'/%3E%3C/svg%3E");
+}
+
+.successButton {
+  --btn-bg: var(--success);
+  --btn-hover-bg: var(--success);
+  --btn-color: var(--text-over-success);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%2322c55e' stroke-width='5'/%3E%3C/svg%3E");
+}
+
+.warningButton {
+  --btn-bg: var(--warning);
+  --btn-hover-bg: var(--warning);
+  --btn-color: var(--text-over-warning);
+  --btn-border-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23eab308' stroke-width='5'/%3E%3C/svg%3E");
+}

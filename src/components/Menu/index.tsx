@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { HomeIcon, InfoIcon, Settings, Sun } from 'lucide-react';
 import styles from './styles.module.css';
 import '../../styles/global.css';
+import buttonStyles from '../Button/styles.module.css';
 
 interface MenuItem {
   label: string;
@@ -31,10 +32,17 @@ const menuItems: MenuItem[] = [
 interface MenuItemProps {
   label: string;
   type?: 'default' | 'icon' | 'text';
-  variant?: 'default' | 'primary';
+  variant?: 'default' | 'primary' | 'cta' | 'secondary';
   icon: React.ElementType;
   link: string;
 }
+
+const variantClasses: Record<string, string> = {
+  default: buttonStyles.outlineButton,
+  primary: buttonStyles.primaryButton,
+  secondary: buttonStyles.secondaryButton,
+  cta: buttonStyles.ctaButton,
+};
 
 function MenuItem({
   label,
@@ -43,9 +51,15 @@ function MenuItem({
   type = 'default',
   variant = 'default',
 }: MenuItemProps) {
+  const className = `
+    ${buttonStyles.baseButton} 
+    ${variantClasses[variant] || buttonStyles.outlineButton}
+  `.trim();
+
   return (
     <Link
       className={variant && variant === 'primary' ? 'primaryButton' : 'outlinedButton'}
+      className={className}
       to={link}
     >
       {type && type === 'text' && <>{label}</>}
@@ -71,11 +85,27 @@ export function Menu() {
           {...item}
         />
       ))}
-      <MenuItem
+      {/* <MenuItem
         type='icon'
         variant='primary'
         icon={Sun}
         label='Dark Mode'
+        link='/settings'
+      /> */}
+
+      {/* Login / Signup */}
+      <MenuItem
+        type='text'
+        variant='default'
+        icon={Sun}
+        label='Login'
+        link='/settings'
+      />
+      <MenuItem
+        type='text'
+        variant='secondary'
+        icon={Sun}
+        label='Sign Up'
         link='/settings'
       />
     </nav>

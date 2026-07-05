@@ -1,26 +1,16 @@
-.taskForm {
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 3.2rem;
-  /* background-color: color-mix(in srgb, var(--text-default) 5%, transparent); */
-}
-
-input {
+.customInput {
   width: 100%;
   max-width: 55rem;
-  height: 4rem;
+  height: 5rem;
   padding: 0.8rem;
+  margin: 1.6rem 0 0.8rem 0;
   font: inherit;
   font-size: 2rem;
   font-size: 1.6rem;
   color: var(--primary-light);
+  text-align: center;
   -webkit-appearance: none;
   appearance: none;
-  background-color: transparent;
   border-color: rgb(255, 255, 255);
   border-width: 0.2rem;
   border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23ffffff' stroke-width='5'/%3E%3C/svg%3E");
@@ -28,10 +18,20 @@ input {
   border-image-repeat: stretch;
 }
 
-input:focus {
+.customInput:focus {
   outline: 0;
+  background-color: color-mix(in srgb, var(--primary-light) 3%, transparent);
+  border-width: 0.2rem;
+  border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23ffffff' stroke-width='5'/%3E%3C/svg%3E");
+  border-image-slice: 20;
+  border-image-repeat: stretch;
+}
+
+.customInput:disabled {
+  cursor: not-allowed;
   border-width: 0.2rem;
   border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 C 20 2, 80 8, 95 5 C 98 20, 92 80, 95 95 C 80 98, 20 92, 5 95 C 2 80, 8 20, 5 5' fill='none' stroke='%23ffffff' stroke-width='5'/%3E%3C/svg%3E");
   border-image-slice: 30;
   border-image-repeat: stretch;
+  opacity: 0.3;
 }
