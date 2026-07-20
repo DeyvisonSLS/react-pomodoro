@@ -1,18 +1,21 @@
-import { PlayCircle } from 'lucide-react';
 import styles from './styles.module.css';
+import { Input } from '../Input';
+import { PlayButton } from '../PlayButton';
+import { Button } from '../Button';
 
 export function TaskForm() {
   return (
-    <div className={`${styles.taskForm} ${styles.scribbleBox}`}>
-      <p>What task do you want to start?</p>
-      <input
-        placeholder='Insert the name of your task here...'
-        type='text'
-      />
-      <button className={`${styles.startButton}`}>
-        <PlayCircle />
-        Start
-      </button>
-    </div>
+    <form className={styles.taskForm}>
+      <div className='formRow'>
+        <Input
+          id='taskInput'
+          type='text'
+          label='What task do you want to start?'
+          placeholder='Insert the name of your task here...'
+          title='Task Input'
+        />
+      </div>
+      <PlayButton />
+    </form>
   );
 }

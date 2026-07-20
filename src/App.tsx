@@ -7,38 +7,33 @@ import { TaskForm } from './components/TaskForm';
 import './styles/global.css';
 import './styles/theme.css';
 import { Cronometer } from './components/Cronometer';
+import { Cycles } from './components/Cycles';
 
 function App() {
   return (
     <div className='appContainer'>
-      <Container direction='horizontal'>
-        {/* Header */}
-        <Container>
-          <Header>
-            <div className='logoContainer'>
-              <Logo
-                width={64}
-                height={64}
-              />
-            </div>
-            <h2>React Pomodoro</h2>
-          </Header>
-        </Container>
-        {/* Menu */}
-        <Container>
-          <Menu />
-        </Container>
+      <Container direction='horizontal' className='headerContainer'>
+        <Header>
+          <div className='logoContainer'>
+            <Logo
+              width={64}
+              height={64}
+            />
+          </div>
+          <h2>React Pomodoro</h2>
+        </Header>
+
+        <Menu />
       </Container>
 
       {/* Cronometer */}
       <Container>
-        <Cronometer>
-          00:00:00
-        </Cronometer>
+        <Cronometer>00:00:00</Cronometer>
       </Container>
 
-      {/* Task form */}
+      {/* Cycles + Taskform component */}
       <Container>
+        <Cycles />
         <TaskForm />
       </Container>
 

@@ -1,7 +1,8 @@
 .heading {
   display: flex;
   flex-direction: row;
+  gap: 2.4rem;
   align-items: center;
   justify-content: center;
-  gap: 2.4rem;
+  max-width: 102.4rem;
 }

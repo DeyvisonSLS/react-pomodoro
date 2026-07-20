@@ -1,0 +1,100 @@
+.cyclesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  max-width: 55rem;
+}
+
+.cyclesDotsContainer {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 102.4rem;
+  /* margin-block: 4.2rem; */
+  margin-bottom: 4.2rem;
+}
+
+.cyclesDotsContainer::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 1px;
+  content: '';
+  background-color: color-mix(in srgb, var(--text-default), transparent 70%);
+}
+
+.cyclesSubtitlesContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 55rem;
+}
+
+.edgeDot {
+  position: relative;
+  z-index: 1;
+  width: 1.56rem;
+  height: 1.56rem;
+  background-color: color-mix(in srgb, var(--text-default), transparent 70%);
+  border-radius: 50%;
+}
+
+.cycleDotWaiting {
+  position: relative;
+  z-index: 1;
+  width: 1.56rem;
+  height: 1.56rem;
+  background-color: var(--gray-900);
+  border-color: color-mix(in srgb, var(--text-default), transparent 70%);
+  border-style: dotted;
+  border-width: 0.2rem;
+  border-radius: 50%;
+}
+
+.cycleDotActive {
+  position: relative;
+  z-index: 1;
+  width: 1.56rem;
+  height: 1.56rem;
+  background-color: var(--gray-500);
+  border-radius: 50%;
+}
+
+.workTime {
+  background-color: var(--warning);
+}
+.shortBreak {
+  background-color: var(--success);
+}
+.longBreak {
+  background-color: var(--info);
+}
+
+.startFlag {
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--success);
+  /* Forma de marcador apontando para cima */
+  clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0% 100%, 0% 35%);
+  transform: translateY(50%);
+  rotate: 90deg;
+}
+
+.endFlag {
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--gray-400);
+  /* Forma de marcador apontando para baixo */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 65%, 50% 100%, 0% 65%);
+  transform: translateY(-50%);
+  rotate: 90deg;
+}
