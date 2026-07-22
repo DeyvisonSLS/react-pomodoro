@@ -4,6 +4,7 @@ import { HomeIcon, InfoIcon, Settings, Sun } from 'lucide-react';
 import styles from './styles.module.css';
 import '../../styles/global.css';
 import buttonStyles from '../Button/styles.module.css';
+import { cn } from '../../utils/cn';
 
 interface MenuItem {
   label: string;
@@ -51,14 +52,13 @@ function MenuItem({
   type = 'default',
   variant = 'default',
 }: MenuItemProps) {
-  const className = `
-    ${buttonStyles.baseButton} 
-    ${variantClasses[variant] || buttonStyles.outlineButton}
-  `.trim();
+  const className = cn(
+    buttonStyles.baseButton,
+    variantClasses[variant] || buttonStyles.outlineButton,
+  );
 
   return (
     <Link
-      className={variant && variant === 'primary' ? 'primaryButton' : 'outlinedButton'}
       className={className}
       to={link}
     >
