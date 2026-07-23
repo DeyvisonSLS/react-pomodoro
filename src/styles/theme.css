@@ -65,15 +65,15 @@
 /* 🌞 Modo Claro - Inverte a função dos cinzas e textos */
 :root[data-theme='light'] {
   /* Tons de Cinza Invertidos */
-  --gray-100: #0a0f1a;
-  --gray-200: #181f2e;
-  --gray-300: #272f43;
-  --gray-400: #363d56;
-  --gray-500: #454f6a;
-  --gray-600: #555f7d;
-  --gray-700: #aab3cc;
-  --gray-800: #cdd3e1;
-  --gray-900: #e6e9f0; /* Fundo principal claro */
+  --gray-100: #1a190a;
+  --gray-200: #2e2c18;
+  --gray-300: #434127;
+  --gray-400: #565436;
+  --gray-500: #6a6945;
+  --gray-600: #7d7955;
+  --gray-700: #cccaaa;
+  --gray-800: #e1e1cd;
+  --gray-900: #f0efe6; /* Fundo principal claro */
 
   /* 📝 Texto no modo claro */
   --text-default: #0a0f1a;

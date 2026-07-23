@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import type { LinkHTMLAttributes } from 'react';
-import { HomeIcon, InfoIcon, Settings, Sun } from 'lucide-react';
+import { HomeIcon, InfoIcon, Moon, Settings, Sun } from 'lucide-react';
 import styles from './styles.module.css';
 import '../../styles/global.css';
 import buttonStyles from '../Button/styles.module.css';
@@ -89,21 +89,27 @@ function MenuItem({
 }
 
 export function Menu() {
-  const [theme, setTheme] = useState<Theme>('dark');
-  
+  const [theme, setTheme] = useState<Theme>(() => {
+    const currentTheme = localStorage.getItem('theme') as Theme | null;
+    return currentTheme || 'light';
+  });
+
   function handleChangeTheme(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
     event.preventDefault();
-    
+
     setTheme((prevTheme) => {
       const newTheme = prevTheme === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
       return newTheme;
     });
   }
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return (
     <nav className={styles.menu}>
-      <p>{theme}</p>
       {menuItems.map((item, index) => {
         const { ariaLabel, ...itemProps } = item;
 
@@ -139,7 +145,7 @@ export function Menu() {
       <MenuItem
         type='icon'
         variant='secondary'
-        icon={Sun}
+        icon={theme === 'light' ? Moon : Sun}
         label='Dark Mode'
         link='/settings'
         aria-label='Alternar tema escuro/claro'
