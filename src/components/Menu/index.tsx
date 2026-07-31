@@ -94,7 +94,7 @@ export function Menu() {
     return currentTheme || 'light';
   });
 
-  function handleChangeTheme(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
+  function handleChangeTheme(event: React.MouseEvent<HTMLAnchorElement>): void {
     event.preventDefault();
 
     setTheme((prevTheme) => {

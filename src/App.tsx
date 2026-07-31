@@ -3,14 +3,17 @@ import Home from './pages/Home';
 
 import './styles/global.css';
 import './styles/theme.css';
-import AboutPomodoro from './pages/AboutPomodoro';
+import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider';
+// import AboutPomodoro from './pages/AboutPomodoro';
 
 function App() {
   return (
-    <MainTemplate>
-      <Home />
-      {/* <AboutPomodoro /> */}
-    </MainTemplate>
+    <TaskContextProvider>
+      <MainTemplate>
+        <Home />
+        {/* <AboutPomodoro /> */}
+      </MainTemplate>
+    </TaskContextProvider>
   );
 }
 

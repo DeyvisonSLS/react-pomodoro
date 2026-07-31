@@ -1,9 +1,7 @@
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import styles from './styles.module.css';
 
-type ContainerProps = {
-  children: React.ReactNode;
-};
-
-export function Cronometer({ children }: ContainerProps) {
-  return <div className={styles.cronCounter}>{children}</div>;
+export function Cronometer() {
+  const { state } = useTaskContext();
+  return <div className={styles.cronCounter}>{state.formatedSecondsRemaining}</div>;
 }
