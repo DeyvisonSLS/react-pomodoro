@@ -10,5 +10,6 @@ export type TaskStateModel = {
         focus: number; // in minutes
         shortBreak: number; // in minutes
         longBreak: number; // in minutes
+        waiting: null; // waiting state, no duration
     }
 }

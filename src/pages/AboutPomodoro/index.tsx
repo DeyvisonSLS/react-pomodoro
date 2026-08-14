@@ -1,6 +1,5 @@
 import { Container } from "../../components/Container";
 import GenericHtml from "../../components/GenericHtml";
-import { Header } from "../../components/Header";
 
 function AboutPomodoro() {
     return (

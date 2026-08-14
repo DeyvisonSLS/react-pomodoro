@@ -48,7 +48,7 @@
   border-radius: 50%;
 }
 
-.cycleDotWaiting {
+.waiting {
   position: relative;
   z-index: 1;
   width: 1.56rem;
@@ -69,7 +69,7 @@
   border-radius: 50%;
 }
 
-.workTime {
+.focus {
   background-color: var(--warning);
 }
 .shortBreak {
@@ -82,7 +82,7 @@
 .startFlag {
   width: 1.6rem;
   height: 1.6rem;
-  background-color: var(--success);
+  background-color: var(--primary-light);
   /* Forma de marcador apontando para cima */
   clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0% 100%, 0% 35%);
   transform: translateY(50%);
@@ -92,7 +92,7 @@
 .endFlag {
   width: 1.6rem;
   height: 1.6rem;
-  background-color: var(--gray-400);
+  background-color: var(--gray-700);
   /* Forma de marcador apontando para baixo */
   clip-path: polygon(0% 0%, 100% 0%, 100% 65%, 50% 100%, 0% 65%);
   transform: translateY(-50%);

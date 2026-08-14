@@ -28,13 +28,20 @@ export function TaskForm() {
       return;
     };
 
+    const duration = state.config[nextCycleType];
+
+    if (duration === null || duration === undefined) {
+      alert('The current cycle does not have a duration yet.');
+      return;
+    }
+
     const newTask: TaskModel = {
       id: Date.now().toString(),
       name: taskName,
       startDate: Date.now(),
       completedDate: null,
       interruptedDate: null,
-      duration: state.config[nextCycleType],
+      duration,
       type: nextCycleType
     }
 
