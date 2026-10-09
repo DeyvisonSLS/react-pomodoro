@@ -1,5 +1,4 @@
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
-import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import styles from './styles.module.css';
 
@@ -9,20 +8,29 @@ export function Cycles() {
   const totalCycleSteps = Array.from({ length: 8 });
   const currentStep = state.currentCycle;
 
+  const cycleDescriptionMap: { [key: string]: string } = {
+    focus: 'Focus',
+    shortBreak: 'Short Break',
+    longBreak: 'Long Break',
+  };
+
   return (
     <div className={styles.cyclesContainer}>
       {/* <h3>Cycles</h3> */}
       {/* <span className={`${styles.edgeDot} ${styles.startFlag}`}></span> */}
       <div className={styles.cyclesDotsContainer}>
         {totalCycleSteps.map((_, index) => {
-          const nextCycleType = getNextCycleType(index === currentStep ? currentStep : getNextCycle(currentStep));
+          const nextCycleType = getNextCycleType(index + 1);
+          const cycleDescription =
+            cycleDescriptionMap[nextCycleType] ?? cycleDescriptionMap.focus;
 
-          console.log('nextCycleType', nextCycleType, 'currentStep', currentStep, 'index', index);
-
+          // console.log('nextCycleType', nextCycleType, 'currentStep', currentStep, 'index', index);
           return (
             <span
-              key={index}
-              className={`${styles.cycleDotWaiting} ${index+1 === currentStep ? styles[nextCycleType] : styles.waiting}`}
+              key={`${nextCycleType}-${index}`}
+              className={`${styles.edgeDot} ${index + 1 === currentStep ? styles[nextCycleType] : styles.waiting}`}
+              aria-label={`Cycle ${index + 1}: ${cycleDescription}`}
+              title={`Cycle ${index + 1}: ${cycleDescription}`}
             ></span>
           );
         })}

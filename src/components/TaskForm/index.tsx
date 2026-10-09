@@ -1,12 +1,13 @@
 import styles from './styles.module.css';
 import { Input } from '../Input';
-import { PlayButton } from '../PlayButton';
+import { Button } from '../Button';
 import { useRef } from 'react';
 import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
+import { PlayCircle, StopCircle } from 'lucide-react';
 
 export function TaskForm() {
   const { state, setState } = useTaskContext();
@@ -19,14 +20,14 @@ export function TaskForm() {
   function handleCreateNewTask(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(!taskNameInputRef) return;
+    if (!taskNameInputRef) return;
 
     const taskName = taskNameInputRef.current?.value.trim();
 
-    if(!taskName) {
+    if (!taskName) {
       alert('Insert the task name in the input');
       return;
-    };
+    }
 
     const duration = state.config[nextCycleType];
 
@@ -42,8 +43,8 @@ export function TaskForm() {
       completedDate: null,
       interruptedDate: null,
       duration,
-      type: nextCycleType
-    }
+      type: nextCycleType,
+    };
 
     const secondsRemaining = newTask.duration * 60;
 
@@ -54,13 +55,29 @@ export function TaskForm() {
         currentCycle: nextCycle,
         secondsRemaining,
         formatedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
-        tasks: [...prevState.tasks, newTask]
-      }
-    })
+        tasks: [...prevState.tasks, newTask],
+      };
+    });
+  }
+
+  function handleStopTask() {
+    if (!state.activeTask) return;
+
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formatedSecondsRemaining: '00:00',
+      };
+    });
   }
 
   return (
-    <form onSubmit={handleCreateNewTask} className={styles.taskForm}>
+    <form
+      onSubmit={handleCreateNewTask}
+      className={styles.taskForm}
+    >
       <div className='formRow'>
         <Input
           id='taskInput'
@@ -71,9 +88,37 @@ export function TaskForm() {
           // value={taskName}
           // onChange={(e) => setTaskName(e.target.value)}
           ref={taskNameInputRef}
+          disabled={!!state.activeTask}
         />
       </div>
-      <PlayButton />
+      <div className='formRow'>
+        {!state.activeTask && (
+          <Button
+            variant='cta'
+            aria-label='Iniciar nova tarefa'
+            title='Iniciar nova tarefa'
+            type='submit'
+            icon={<PlayCircle size={24} />}
+            key='sendForm'
+          >
+            Start
+          </Button>
+        )}
+        {!!state.activeTask && (
+          <Button
+            variant='cta'
+            aria-label='Interromper tarefa atual'
+            title='Interromper tarefa atual'
+            type='button'
+            icon={<StopCircle size={24} />}
+            color='warning'
+            onClick={handleStopTask}
+            key='stopTask'
+          >
+            Stop
+          </Button>
+        )}
+      </div>
     </form>
   );
 }

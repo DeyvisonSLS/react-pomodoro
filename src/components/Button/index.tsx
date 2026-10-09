@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'cta';
   color?: 'destructive' | 'info' | 'success' | 'warning' | 'default';
+  icon?: React.ReactNode;
 } & React.ComponentProps<'button'>;
 
 const variantStyles: Record<string, string> = {
@@ -26,6 +27,7 @@ export function Button({
   children,
   className,
   color = 'default',
+  icon,
   ...props
 }: ButtonProps) {
   return (
@@ -33,6 +35,7 @@ export function Button({
       className={`${styles.baseButton} ${variantStyles[variant]} ${className ?? ''} ${colorStyles[color]}`}
       {...props}
     >
+      {icon}
       {children}
     </button>
   );

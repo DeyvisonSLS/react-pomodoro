@@ -46,6 +46,7 @@
   height: 1.56rem;
   background-color: color-mix(in srgb, var(--text-default), transparent 70%);
   border-radius: 50%;
+  cursor: help;
 }
 
 .waiting {
@@ -70,10 +71,10 @@
 }
 
 .focus {
-  background-color: var(--warning);
+  background-color: var(--success);
 }
 .shortBreak {
-  background-color: var(--success);
+  background-color: var(--warning);
 }
 .longBreak {
   background-color: var(--info);
