@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import type { TaskStateModel } from "../../models/TaskStateModel";
 import { initialTaskState } from "./initialTaskState";
+import type { TaskActionModel } from "./taskActions";
 
 // Aqui estamos dizendo: "este contexto vai compartilhar dois dados principais".
 // - state: o estado atual do pomodoro
@@ -8,14 +9,14 @@ import { initialTaskState } from "./initialTaskState";
 // Isso é o contrato do contexto.
 type TaskContextProps = {
     state: TaskStateModel,
-    setState: React.Dispatch<React.SetStateAction<TaskStateModel>>,
+    dispatch: React.Dispatch<TaskActionModel>,
 }
 
 // Este objeto é o valor padrão do contexto.
 // Ele serve como segurança, caso algum componente use o contexto antes de um Provider existir.
 const initialContextValue = {
     state: initialTaskState,
-    setState: () => {},
+    dispatch: () => {},
 }
 
 // Criamos o contexto verdadeiro.

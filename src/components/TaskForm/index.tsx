@@ -8,9 +8,10 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 import { PlayCircle, StopCircle } from 'lucide-react';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 export function TaskForm() {
-  const { state, setState } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
 
   // const [taskName, setTaskName] = useState(''); // Usar state quando precisamos trackear as mudanças dos dados em tempo real (talvez seja bom considerar utilizar a técnica de debounce para evitar problemas de performance)
   const taskNameInputRef = useRef<HTMLInputElement>(null); // Usar em casos em que não é preciso rastrear em tempo real (a cada renderização) o preenchimento do dado
@@ -46,31 +47,12 @@ export function TaskForm() {
       type: nextCycleType,
     };
 
-    const secondsRemaining = newTask.duration * 60;
-
-    setState(prevState => {
-      return {
-        ...prevState,
-        activeTask: newTask,
-        currentCycle: nextCycle,
-        secondsRemaining,
-        formatedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
-        tasks: [...prevState.tasks, newTask],
-      };
-    });
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
   }
 
   function handleStopTask() {
     if (!state.activeTask) return;
-
-    setState(prevState => {
-      return {
-        ...prevState,
-        activeTask: null,
-        secondsRemaining: 0,
-        formatedSecondsRemaining: '00:00',
-      };
-    });
+    dispatch({ type: TaskActionTypes.STOP_TASK });
   }
 
   return (
