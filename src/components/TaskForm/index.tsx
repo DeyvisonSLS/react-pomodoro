@@ -6,9 +6,9 @@ import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
-import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 import { PlayCircle, StopCircle } from 'lucide-react';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { TaskTip } from '../TaskTip';
 
 export function TaskForm() {
   const { state, dispatch } = useTaskContext();
@@ -100,6 +100,11 @@ export function TaskForm() {
             Stop
           </Button>
         )}
+        <TaskTip
+          activeTask={state.activeTask}
+          nextCycleType={nextCycleType}
+          config={state.config}
+        />
       </div>
     </form>
   );
